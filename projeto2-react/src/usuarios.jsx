@@ -10,9 +10,9 @@ export default class Usuarios extends Component {
         this.state = {lista: [
             {username: 'mrbrightside'},
             {username: 'jenny'}
-        ], usuario: {nome:''} }
+        ], usuario: {username:''} }
     
-        axios.get('http://localhost:3001/usuarios')
+        axios.get('http://localhost:3000/userlist')
             .then(resp=> {
                 if(Math.floor(resp.status/100) === 2) {
                     this.setState({lista:resp.data})
@@ -63,7 +63,9 @@ export default class Usuarios extends Component {
     }
 
     cadastrar() {
-        axios.post('http://localhost:3001/usuarios')
+        console.log("AAAAAAAAAAAAAA")
+        console.log(this.state.usuario)
+        axios.post('http://localhost:3000/users/',this.state.usuario)
             .then(resp=> {
                 if(Math.floor(resp.status/100) === 2) {
                     this.setState((state) => {
@@ -75,14 +77,18 @@ export default class Usuarios extends Component {
                     })
                     return;
                 }
-                console.log(resp)
+                console.log(resp);
             })
-            .catch(erro => console.log(erro))
+            .catch(erro => console.log(erro));
+        window.location.reload();
+        return false;
+
+            
     }
 
     handleChange(event) {
         var handleState = (state,event) => {
-            state.usuario[event.target.name] = event.target.value
+            state.usuario.username = event.target.value
             return state
         }
         this.setState(handleState(this.state,event))
