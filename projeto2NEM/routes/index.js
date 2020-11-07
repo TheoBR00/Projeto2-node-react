@@ -40,4 +40,22 @@ router.post('/users/', function(req, res,next) {
     res.end();
   }});
 });
+
+router.get('/users/', function(req, res,next) {
+  var db = require("../db");
+  var User = db.Mongoose.model('usercollection', db.userSchema,'usercollection');
+  console.log("AAAAAAAAAAAAAA");
+  console.log(req.body.username);
+  var newuser= new User({ username:req.body.username,email:'abc@insper.edu.br' });
+  console.log(newuser);
+  newuser.save({function (err) {
+    if (err) {
+      res.status(500).json({ error:err.message });
+      res.end();
+      return;
+    }
+    res.json(newuser);
+    res.end();
+  }});
+});
 module.exports = router;
