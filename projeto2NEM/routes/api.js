@@ -70,4 +70,27 @@ router.get('/singlecard',function(req,res){
     });
 })
 
+// GET CARD SET/ DECK
+
+router.get('/cardset', function(req,res){
+    var axios = require("axios").default;
+
+    var options = {
+        method: 'GET',
+        url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/sets/%7Bset%7D',
+        headers: {
+          'x-rapidapi-key': 'SIGN-UP-FOR-KEY',
+          'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+          console.log(response.data);
+          res.send(response.data);
+      }).catch(function (error) {
+          console.error(error);
+      });
+
+})
+
 module.exports = router;
