@@ -40,10 +40,10 @@ router.get('/cardlist', function(req,res) {
     }
     };
 
-    console.log(req.body)
+    //console.log(req.body)
 
     axios.request(options).then(function (response) {
-        console.log(response.data["Basic"]);
+        console.log(response.data);
         res.send(response.data["Basic"]);
     }).catch(function (error) {
         console.error(error);

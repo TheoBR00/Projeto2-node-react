@@ -11,10 +11,14 @@ export default class Cards extends Component {
             {name: 'prototype', type:'Hello World', text:'Runs the app'},
             {name: 'generic', type:'Test', text:'Debugs'}
         ], set: {cardset:'Basic'} } 
-        if (localStorage.getItem("set") != null) {
+        console.log("AAAAAAAAA");
+        console.log(localStorage.getItem("cardset"));
+        if (localStorage.getItem("cardset") != null) {
             this.state.set.cardset = localStorage.getItem("cardset");
         }
-        localStorage.setItem("cardset", "Basic");
+
+        
+        this.handleButton = this.handleButton.bind(this)
     }
 
     async componentDidMount() {
@@ -32,15 +36,7 @@ export default class Cards extends Component {
 
     }
 
-    getNew(value) {
-        console.log(value)
-        localStorage.setItem("cardset", value);
-        console.log("AAAAAAAAAA");
-        console.log(localStorage.getItem("cardset"));
-
-        //window.location.reload();
-        return false;       
-    }
+    
 
 
 
@@ -66,8 +62,8 @@ export default class Cards extends Component {
         })
         return (
             <div>
-            <button onClick={() => this.getNew(this.value)} value="Basic">Basic</button>
-            <button onClick={() => this.getNew(this.value)} value="Classic">Classic</button>
+            <button onClick={this.handleButton} value="Basic">Basic</button>
+            <button onClick={this.handleButton} value="Classic">Classic</button>
             <h3>{this.state.set.cardset}</h3>
                 <ul>
                     {liCards}
@@ -75,4 +71,19 @@ export default class Cards extends Component {
             </div>
         )
     }
+
+    handleButton(event) {
+        var handleState = (state,event) => {
+            state.set.cardset = event.target.value
+            return state
+        }
+        console.log(this.state)
+        this.setState(handleState(this.state,event))
+        
+        localStorage.setItem("cardset",this.state.set.cardset);
+        console.log(localStorage.getItem("cardset"));
+
+        window.location.reload();
+    }
+
 }
