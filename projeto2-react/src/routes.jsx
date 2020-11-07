@@ -3,11 +3,13 @@ import { BrowserRouter as Router,Route,Redirect} from 'react-router-dom'
 
 import Usuarios from './usuarios'
 import Cardbacks from './cardbacks'
+import Cards from './cards'
 
 export default props => (
     <Router>
         <Route path='/usuarios' component={Usuarios} />
         <Route path='/cardbacks' component={Cardbacks} />
-        <Redirect from='*' to='/cardbacks' />
+        <Route path='/cards' component={Cards} />
+        <Redirect from='*' to='/cards' />
     </Router>
 )
