@@ -24,7 +24,7 @@
   color: white;
 }
 
-.button {
+.button1 {
     background-color: #cfd3cf;
     border: none;
     color: rgb(51, 48, 207);
@@ -38,6 +38,11 @@
 ul {
   list-style-type: none;
 
+}
+
+hr {
+  color: #FFFFFF;
+  width: 300px;
 }
 
 

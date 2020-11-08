@@ -8,9 +8,12 @@ function App() {
       <div className="App">
         <header className="App-header">
           <h1>Lista Hearthstone</h1>
-          <a href="./cards/?Basic" class="button">Card List</a>
-          <a href="./decks" class="button">Decklist</a>
-          <a href="./cardbacks" class="button">Cardbacks List</a>
+          <nobr>
+            <a href="./cards/?Basic" class="button"> <button>Card List</button></a>
+            <a href="./decks" class="button"><button>Decklist</button></a>
+            <a href="./cardbacks" class="button"><button>Cardbacks List</button></a>
+          </nobr>
+          <hr/><br/>
           <Routes />
         </header>
       </div>

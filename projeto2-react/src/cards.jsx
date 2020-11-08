@@ -22,6 +22,9 @@ export default class Cards extends Component {
             this.state.cardset.set = localStorage.getItem("dset");
         }
         */
+
+
+        setString.replace('%20',' ')
         
         this.handleButton = this.handleButton.bind(this)
     }
@@ -73,8 +76,35 @@ export default class Cards extends Component {
             <div>
             <button onClick={this.handleButton} value="Basic">Basic</button>
             <button onClick={this.handleButton} value="Classic">Classic</button>
+            <button onClick={this.handleButton} value="Hall of Fame">Hall of Fame</button>
             <button onClick={this.handleButton} value="Naxxramas">Naxxramas</button>
-            <h3>{this.state.cardset.set}</h3>
+            <button onClick={this.handleButton} value="Goblins vs Gnomes">Goblins vs Gnomes</button>
+            <button onClick={this.handleButton} value="Blackrock Mountain">Blackrock Mountain</button>
+            <button onClick={this.handleButton} value="The Grand Tournament">The Grand Tournament</button>
+            <button onClick={this.handleButton} value="The League of Explorers">The League of Explorers</button>
+            <button onClick={this.handleButton} value="Whispers of the Old Gods">Whispers of the Old Gods</button>
+            <button onClick={this.handleButton} value="One Night in Karazhan">One Night in Karazhan</button>
+            <button onClick={this.handleButton} value="Mean Streets of Gadgetzan">Mean Streets of Gadgetzan</button>
+            <button onClick={this.handleButton} value="Journey to Un'Goro">Journey to Un'Goro</button>
+            <button onClick={this.handleButton} value="Knights of the Frozen Throne">Knights of the Frozen Throne</button>
+            <button onClick={this.handleButton} value="Whispers of the Old Gods">Whispers of the Old Gods</button>
+            <button onClick={this.handleButton} value="Kobolds & Catacombs">Kobolds & Catacombs</button>
+            <button onClick={this.handleButton} value="The Witchwood">The Witchwood</button>
+            <button onClick={this.handleButton} value="The Boomsday Project">The Boomsday Project</button>
+            <button onClick={this.handleButton} value="Rastakhan's Rumble">Rastakhan's Rumble</button>
+            <button onClick={this.handleButton} value="Rise of Shadows">Rise of Shadows</button>
+            <button onClick={this.handleButton} value="Saviors of Uldum">Saviors of Uldum</button>
+            <button onClick={this.handleButton} value="Descent of Dragons">Descent of Dragons</button>
+            <button onClick={this.handleButton} value="Galakrond's Awakening">Galakrond's Awakening</button>
+            <button onClick={this.handleButton} value="Ashes of Outland">Ashes of Outland</button>
+            <button onClick={this.handleButton} value="Demon Hunter Initiate">Demon Hunter Initiate</button>
+            <button onClick={this.handleButton} value="Scholomance Academy">Scholomance Academy</button>
+            <button onClick={this.handleButton} value="Madness At The Darkmoon Faire">Madness At The Darkmoon Faire</button>
+            <button onClick={this.handleButton} value="Wild Event">Galakrond's Awakening</button>
+            <button onClick={this.handleButton} value="Battlegrounds">Rastakhan's Rumble</button>
+            <button onClick={this.handleButton} value="Tavern Brawl">Demon Hunter Initiate</button>
+            <button onClick={this.handleButton} value="Taverns of Time">Scholomance Academy</button>
+            <h3>{this.state.cardset.set.replaceAll('%20',' ')}</h3>
                 <ul>
                     {liCards}
                 </ul>
