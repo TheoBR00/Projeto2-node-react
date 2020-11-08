@@ -10,6 +10,6 @@ export default props => (
         <Route path='/usuarios' component={Usuarios} />
         <Route path='/cardbacks' component={Cardbacks} />
         <Route path='/cards' component={Cards} />
-        <Redirect from='*' to='/cards' />
+        <Redirect from='*' to='/usuarios' />
     </Router>
 )
