@@ -56,7 +56,9 @@ export default class Cards extends Component {
                     <li key={card.name}>
                         <h3>{card.name}</h3>
                         {card.type}<br/><br/>
-                        <small>{card.text}</small><hr></hr>
+                        <small>{card.text}</small><br></br>
+                        <button onClick={this.addCard} value= {card.name + "/" + card.type + "/" + card.text} >Adicionar ao Deck</button>
+                        <hr></hr>
                     </li>
             )
         })
@@ -84,6 +86,33 @@ export default class Cards extends Component {
         console.log(localStorage.getItem("set"));
 
         //window.location.reload();
+    }
+
+
+    addCard(event) {
+
+        var splits = event.target.value.split("/")
+        console.log(event.target.value)
+        console.log(splits)
+        var cardvalues = {name: splits[0], type: splits[1], text: splits[2]}
+        console.log(cardvalues)
+        axios.post('http://localhost:3000/decks/', cardvalues)
+            .then(resp=> {
+                if(Math.floor(resp.status/100) === 2) {
+                    this.setState((state) => {
+                        return {
+                            lista: [...state.lista, state.cardset],
+                            redirectToReferrer: true
+                        }
+                    })
+                    return;
+                }
+                console.log(resp);
+            })
+            .catch(erro => console.log(erro));
+
+    
+        window.location.href="./decks"
     }
 
 }

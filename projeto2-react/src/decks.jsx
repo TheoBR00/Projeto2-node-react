@@ -39,9 +39,16 @@ export default class Decks extends Component {
 
         var liCards = cards.map(card => {
             return (
-                <li key={card.name}>{card.name}</li>
+                    <li key={card.name}>
+                        <h3>{card.name}</h3>
+                        {card.type}<br/><br/>
+                        <small>{card.text}</small><br></br>
+                        <button onClick={this.deleteCard} value= {card._id} >Remover do Deck</button>
+                        <hr></hr>
+                    </li>
             )
         })
+
         return (
             <div>
                 <ul>
@@ -49,6 +56,27 @@ export default class Decks extends Component {
                 </ul>
             </div>
         )
+    }
+
+    deleteCard(event) {
+
+        axios.delete('http://localhost:3000/decks/' + event.target.value)
+            .then(resp=> {
+                if(Math.floor(resp.status/100) === 2) {
+                    this.setState((state) => {
+                        return {
+                            lista: [...state.lista],
+                            redirectToReferrer: true
+                        }
+                    })
+                    return;
+                }
+                console.log(resp);
+            })
+            .catch(erro => console.log(erro));
+
+    
+        window.location.href="./decks"
     }
 
 }

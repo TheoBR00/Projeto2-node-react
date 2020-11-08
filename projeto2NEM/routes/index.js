@@ -24,11 +24,40 @@ router.get('/decklist', function(req, res) {
   )
 });
 
+/* POST CARD */
+router.post('/decks/', function(req, res,next) {
+  var db2 = require("../db2");
+  var Deck = db2.Mongoose.model('usercollection', db2.userSchema,'usercollection');
+  console.log("BBBBBBBBBBB");
+  console.log(req.body.name);
+  var newdeck= new Deck({ name:req.body.name,type:req.body.type, text:req.body.text });
+  console.log(newdeck);
+  newdeck.save({function (err) {
+    if (err) {
+      res.status(500).json({ error:err.message });
+      res.end();
+      return;
+    }
+    res.json(newdeck);
+    res.end();
+  }});
+});
 
+/* DELETE CARD */
 
-
-
-
+router.delete('/decks/:id', function(req, res, next){
+  var db2 = require('../db2');
+  var Deck = db2.Mongoose.model('usercollection', db2.UserSchema, 'usercollection');
+  Deck.find({ _id: req.params.id }).remove(function(err) {
+    if (err) {
+      res.status(500).json({ error: err.message});
+      res.end();
+      return;
+    }
+    res.json({sucess: true});
+    res.end();
+  });
+});
 
 
 
@@ -85,4 +114,5 @@ router.get('/users/', function(req, res,next) {
     res.end();
   }});
 });
+
 module.exports = router;
