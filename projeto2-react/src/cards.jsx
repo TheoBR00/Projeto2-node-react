@@ -57,10 +57,31 @@ export default class Cards extends Component {
             )
         }
 
+
         
         var cards = this.state.lista;
         console.log(cards)
 
+        var trCards = cards.map(card => {
+            return (
+                    <tr key={card.name}>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}>
+                            {card.name}
+                        </td>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}>
+                            {card.type}
+                        </td>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}>
+                            <small>{card.text}</small>
+                        </td>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white', verticalAlign: 'middle'}}>
+                            <button onClick={this.addCard} value= {card.name + "/" + card.type + "/" + card.text } style={{verticalAlign: 'middle', width:'90px',paddingLeft:'5px',paddingRight:'5px'}} >
+                                Adicionar ao Deck
+                            </button>
+                        </td>
+                    </tr>
+            )
+        })
         var liCards = cards.map(card => {
             return (
                     <li key={card.name}>
@@ -73,7 +94,8 @@ export default class Cards extends Component {
             )
         })
         return (
-            <div>
+            <div style={{textAlign: 'center'}}>
+            <small>Cardset:</small><br/>
             <button onClick={this.handleButton} value="Basic">Basic</button>
             <button onClick={this.handleButton} value="Classic">Classic</button>
             <button onClick={this.handleButton} value="Hall of Fame">Hall of Fame</button>
@@ -104,10 +126,18 @@ export default class Cards extends Component {
             <button onClick={this.handleButton} value="Battlegrounds">Rastakhan's Rumble</button>
             <button onClick={this.handleButton} value="Tavern Brawl">Demon Hunter Initiate</button>
             <button onClick={this.handleButton} value="Taverns of Time">Scholomance Academy</button>
-            <h3>{this.state.cardset.set.replaceAll('%20',' ').replaceAll('%27', "'")}</h3>
-                <ul>
-                    {liCards}
-                </ul>
+
+            <h2>{this.state.cardset.set.replaceAll('%20',' ')}</h2><hr/>
+            
+            <table style={{paddingLeft: '10%',paddingRight: '10%',paddingBottom: '50px',horizontalAlign:'middle'}}>
+                <tr>
+                    <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>Name</b></big></td>
+                    <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>Type</b></big></td>
+                    <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>Text</b></big></td>
+                    <td style={{borderStyle: 'solid',borderColor: 'white',width:'50px'}}></td>
+                </tr>
+                {trCards}
+            </table>
             </div>
         )
     }
@@ -152,7 +182,7 @@ export default class Cards extends Component {
             .catch(erro => console.log(erro));
 
     
-    window.location.href="./decks"
+    window.location.href="../decks"
     }
 
 }

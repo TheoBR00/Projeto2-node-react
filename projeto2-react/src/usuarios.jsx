@@ -45,7 +45,7 @@ export default class Usuarios extends Component {
         })
         return (
             <div>
-                <ul>
+                <ul style={{listStyleType: 'none',paddingLeft: '10px',paddingRight: '10px'}}>
                     {liUsuarios}
                 </ul>
                 <ul>

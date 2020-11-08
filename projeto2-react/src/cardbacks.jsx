@@ -37,6 +37,7 @@ export default class Cardbacks extends Component {
             )
         }
 
+
         
         var cardbacks = this.state.lista;
         console.log(cardbacks)
@@ -50,11 +51,28 @@ export default class Cardbacks extends Component {
                     </li>
             )
         })
+        var trCardbacks = cardbacks.map(cardback => {
+            return (
+                    <tr key={cardback.name}>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}>{cardback.name}</td>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}><small>{cardback.description}</small></td>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}><small>{cardback.howToGet}</small></td>
+                    </tr>
+            )
+        })
+
+        
         return (
             <div>
-                <ul>
-                    {liCardbacks}
-                </ul>
+                <table style={{paddingLeft: '10%',paddingRight: '10%',paddingBottom: '50px'}}>
+                    <tr>
+                        <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>Name</b></big></td>
+                        <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>Description</b></big></td>
+                        <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>How to Get</b></big></td>
+                    </tr>
+                    {trCardbacks}
+                </table>
+                
             </div>
         )
     }
