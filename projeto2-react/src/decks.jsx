@@ -39,6 +39,26 @@ export default class Decks extends Component {
 
         var cards = this.state.lista
 
+        var trCards = cards.map(card => {
+            return (
+                    <tr key={card.name}>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}>
+                            {card.name}
+                        </td>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}>
+                            {card.type}
+                        </td>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white'}}>
+                            <small>{card.text}</small>
+                        </td>
+                        <td style={{borderStyle: 'solid',borderWidth: '1px',borderColor: 'white', verticalAlign: 'middle'}}>
+                            <button onClick={this.deleteCard} value= {card._id} style={{verticalAlign: 'middle', width:'90px',paddingLeft:'5px',paddingRight:'5px'}} >
+                                Remover do Deck
+                            </button>
+                        </td>
+                    </tr>
+            )
+        })
         var liCards = cards.map(card => {
             return (
                     <li key={card.name}>
@@ -53,9 +73,15 @@ export default class Decks extends Component {
 
         return (
             <div>
-            <ul style={{listStyleType: 'none',paddingLeft: '10px',paddingRight: '10px'}}>
-                    {liCards}
-                </ul>
+            <table style={{paddingLeft: '10%',paddingRight: '10%',paddingBottom: '50px'}}>
+                <tr>
+                    <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>Name</b></big></td>
+                    <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>Type</b></big></td>
+                    <td style={{borderStyle: 'solid',borderColor: 'white'}}><big><b>Text</b></big></td>
+                    <td style={{borderStyle: 'solid',borderColor: 'white',width:'50px'}}></td>
+                </tr>
+                {trCards}
+            </table>
             </div>
         )
     }
