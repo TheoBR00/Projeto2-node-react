@@ -122,10 +122,10 @@ export default class Cards extends Component {
             <button onClick={this.handleButton} value="Demon Hunter Initiate">Demon Hunter Initiate</button>
             <button onClick={this.handleButton} value="Scholomance Academy">Scholomance Academy</button>
             <button onClick={this.handleButton} value="Madness At The Darkmoon Faire">Madness At The Darkmoon Faire</button>
-            <button onClick={this.handleButton} value="Wild Event">Galakrond's Awakening</button>
-            <button onClick={this.handleButton} value="Battlegrounds">Rastakhan's Rumble</button>
-            <button onClick={this.handleButton} value="Tavern Brawl">Demon Hunter Initiate</button>
-            <button onClick={this.handleButton} value="Taverns of Time">Scholomance Academy</button>
+            <button onClick={this.handleButton} value="Wild Event">Wild Event</button>
+            <button onClick={this.handleButton} value="Battlegrounds">Battlegrounds</button>
+            <button onClick={this.handleButton} value="Tavern Brawl">TavernBrawl</button>
+            <button onClick={this.handleButton} value="Taverns of Time">Taverns of Time</button>
 
             <h2>{this.state.cardset.set.replaceAll('%20',' ')}</h2><hr/>
             
