@@ -10,11 +10,11 @@ export default class Cards extends Component {
         this.state = {lista: [
             {name: 'prototype', type:'Hello World', text:'Runs the app'},
             {name: 'generic', type:'Test', text:'Debugs'}
-        ], set: {cardset:'Basic'} } 
+        ], cardset: {set:'Basic'} } 
         console.log("AAAAAAAAA");
-        console.log(localStorage.getItem("cardset"));
-        if (localStorage.getItem("cardset") != null) {
-            this.state.set.cardset = localStorage.getItem("cardset");
+        console.log(localStorage.getItem("set"));
+        if (localStorage.getItem("set") != null) {
+            this.state.cardset.set = localStorage.getItem("dset");
         }
 
         
@@ -22,12 +22,12 @@ export default class Cards extends Component {
     }
 
     async componentDidMount() {
-        console.log(this.state.set)
-        await axios.get('http://localhost:3000/api/cardlist',this.state.set)
+        console.log(this.state.cardset)
+        await axios.get('http://localhost:3000/api/cardset/',this.state.cardset)
             .then(resp=> {
                 if(Math.floor(resp.status/100) === 2) {
                     this.setState({lista:resp.data,
-                                    set:this.state.set})
+                                    cardset:this.state.cardset})
                     return;
                 }
                 console.log(resp)
@@ -64,7 +64,7 @@ export default class Cards extends Component {
             <div>
             <button onClick={this.handleButton} value="Basic">Basic</button>
             <button onClick={this.handleButton} value="Classic">Classic</button>
-            <h3>{this.state.set.cardset}</h3>
+            <h3>{this.state.cardset.set}</h3>
                 <ul>
                     {liCards}
                 </ul>
@@ -74,16 +74,16 @@ export default class Cards extends Component {
 
     handleButton(event) {
         var handleState = (state,event) => {
-            state.set.cardset = event.target.value
+            state.cardset.set = event.target.value
             return state
         }
         console.log(this.state)
         this.setState(handleState(this.state,event))
         
-        localStorage.setItem("cardset",this.state.set.cardset);
-        console.log(localStorage.getItem("cardset"));
+        localStorage.setItem("set",this.state.cardset.set);
+        console.log(localStorage.getItem("set"));
 
-        window.location.reload();
+        //window.location.reload();
     }
 
 }

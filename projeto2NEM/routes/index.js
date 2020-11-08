@@ -6,6 +6,33 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+
+
+/* GET Userlist page. */
+router.get('/decklist', function(req, res) {
+  var db2 = require("../db2");
+  var Decks = db2.Mongoose.model('usercollection', db2.userSchema,'usercollection');
+  console.log("AAAAAAAAAAAAAA")
+  console.log(Decks)
+  Decks.find({}).lean().exec(
+    function (e,docs) {
+      //res.render('userlist', { 'userlist' : docs });
+      console.log(docs)
+      res.json(docs);
+      res.end()
+    }
+  )
+});
+
+
+
+
+
+
+
+
+
+
 /* GET Userlist page. */
 router.get('/userlist', function(req, res) {
   var db = require("../db");
