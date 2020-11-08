@@ -104,7 +104,7 @@ export default class Cards extends Component {
             <button onClick={this.handleButton} value="Battlegrounds">Rastakhan's Rumble</button>
             <button onClick={this.handleButton} value="Tavern Brawl">Demon Hunter Initiate</button>
             <button onClick={this.handleButton} value="Taverns of Time">Scholomance Academy</button>
-            <h3>{this.state.cardset.set.replaceAll('%20',' ')}</h3>
+            <h3>{this.state.cardset.set.replaceAll('%20',' ').replaceAll('%27', "'")}</h3>
                 <ul>
                     {liCards}
                 </ul>
