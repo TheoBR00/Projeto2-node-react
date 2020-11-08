@@ -127,7 +127,7 @@ export default class Cards extends Component {
             <button onClick={this.handleButton} value="Tavern Brawl">TavernBrawl</button>
             <button onClick={this.handleButton} value="Taverns of Time">Taverns of Time</button>
 
-            <h2>{this.state.cardset.set.replaceAll('%20',' ')}</h2><hr/>
+            <h2>{this.state.cardset.set.replaceAll('%20',' ').replaceAll('%27',"'")}</h2><hr/>
             
             <table style={{paddingLeft: '10%',paddingRight: '10%',paddingBottom: '50px',horizontalAlign:'middle'}}>
                 <tr>
@@ -165,24 +165,28 @@ export default class Cards extends Component {
         console.log(event.target.value)
         console.log(splits)
         var cardvalues = {name: splits[0], type: splits[1], text: splits[2]}
-        console.log(cardvalues)
+        console.log(cardvalues);
         axios.post('http://localhost:3000/decks/', cardvalues)
-            .then(resp=> {
-                if(Math.floor(resp.status/100) === 2) {
-                    this.setState((state) => {
-                        return {
-                            lista: [...state.lista, state.cardset],
-                            redirectToReferrer: true
-                        }
-                    })
-                    return;
-                }
-                console.log(resp);
-            })
-            .catch(erro => console.log(erro));
-
-    
-    window.location.href="../decks"
+                .then(resp=> {
+                    if(Math.floor(resp.status/100) === 2) {
+                        this.setState((state) => {
+                            return {
+                                lista: [...state.lista, state.cardset],
+                                redirectToReferrer: true
+                            }
+                        })
+                        return;
+                    }
+                    console.log(resp);
+                })
+                .catch(erro => console.log(erro));
+                
+        setTimeout(() => { window.location.href="../decks" }, 5);
+        
+        
+        
+        
+        
     }
 
 }
