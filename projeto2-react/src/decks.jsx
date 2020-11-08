@@ -35,6 +35,7 @@ export default class Decks extends Component {
             )
         }
 
+        
 
         var cards = this.state.lista
 
@@ -52,7 +53,7 @@ export default class Decks extends Component {
 
         return (
             <div>
-                <ul>
+            <ul style={{listStyleType: 'none',paddingLeft: '10px',paddingRight: '10px'}}>
                     {liCards}
                 </ul>
             </div>
@@ -77,7 +78,7 @@ export default class Decks extends Component {
             .catch(erro => console.log(erro));
 
     
-        window.location.href="./decks"
+        window.location.href="../decks"
     }
 
 }

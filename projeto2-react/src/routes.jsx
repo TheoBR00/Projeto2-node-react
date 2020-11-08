@@ -11,9 +11,7 @@ export default props => (
         <Route path='/usuarios' component={Usuarios} />
         <Route path='/cardbacks' component={Cardbacks} />
         <Route path='/cards' component={Cards} />
-
         <Route path='/decks' component={Deck} />
-        
 
     </Router>
 )

@@ -37,6 +37,7 @@ export default class Cardbacks extends Component {
             )
         }
 
+
         
         var cardbacks = this.state.lista;
         console.log(cardbacks)
@@ -52,7 +53,7 @@ export default class Cardbacks extends Component {
         })
         return (
             <div>
-                <ul>
+                <ul style={{listStyleType: 'none',paddingLeft: '10px',paddingRight: '10px'}}>
                     {liCardbacks}
                 </ul>
             </div>

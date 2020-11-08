@@ -57,6 +57,7 @@ export default class Cards extends Component {
             )
         }
 
+
         
         var cards = this.state.lista;
         console.log(cards)
@@ -104,8 +105,8 @@ export default class Cards extends Component {
             <button onClick={this.handleButton} value="Battlegrounds">Rastakhan's Rumble</button>
             <button onClick={this.handleButton} value="Tavern Brawl">Demon Hunter Initiate</button>
             <button onClick={this.handleButton} value="Taverns of Time">Scholomance Academy</button>
-            <h3>{this.state.cardset.set.replaceAll('%20',' ')}</h3>
-                <ul>
+            <h2>{this.state.cardset.set.replaceAll('%20',' ')}</h2><hr/>
+                <ul style={{listStyleType: 'none',paddingLeft: '10px',paddingRight: '10px'}}>
                     {liCards}
                 </ul>
             </div>
@@ -152,7 +153,7 @@ export default class Cards extends Component {
             .catch(erro => console.log(erro));
 
     
-    window.location.href="./decks"
+    window.location.href="../decks"
     }
 
 }
