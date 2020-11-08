@@ -40,10 +40,10 @@ router.get('/cardlist', function(req,res) {
     }
     };
 
-    console.log(req.body)
+    //console.log(req.body)
 
     axios.request(options).then(function (response) {
-        console.log(response.data["Basic"]);
+        console.log(response.data);
         res.send(response.data["Basic"]);
     }).catch(function (error) {
         console.error(error);
@@ -71,25 +71,24 @@ router.get('/singlecard',function(req,res){
 })
 
 // GET CARD SET/ DECK
-
-router.get('/cardset', function(req,res){
+router.get('/cardset/', function(req,res,next){
     var axios = require("axios").default;
 
     var options = {
-        method: 'GET',
-        url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/sets/%7Bset%7D',
-        headers: {
-          'x-rapidapi-key': 'SIGN-UP-FOR-KEY',
-          'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
-        }
-      };
-      
-      axios.request(options).then(function (response) {
-          console.log(response.data);
-          res.send(response.data);
-      }).catch(function (error) {
-          console.error(error);
-      });
+    method: 'GET',
+    url: 'https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/sets/Classic',
+    headers: {
+        'x-rapidapi-key': '9b116cd926msh4547d15bdc179dbp187562jsn0a60e822fafd',
+        'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+    }
+    };
+
+    axios.request(options).then(function (response) {
+        console.log(response.data);
+        res.send(response.data)
+    }).catch(function (error) {
+        console.error(error);
+    });
 
 })
 
